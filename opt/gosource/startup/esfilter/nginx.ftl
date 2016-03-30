@@ -28,7 +28,7 @@ http {
     server_tokens off;
 
     upstream elasticsearch {
-      server ${configuration.ElasticSearch.EndPoint};
+      server ${configurationObject.ElasticSearch.EndPoint};
 
       keepalive 15;
     }
