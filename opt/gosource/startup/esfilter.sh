@@ -24,7 +24,7 @@ done
 
 # Now the top level nginx configuration
 VARIABLES=""
-VARIABLES="${VARIABLES} -v CONFIGURATION=${CONFIG_FILE}"
+VARIABLES="${VARIABLES} -v conifguration=${CONFIG_FILE}"
 
 java -jar ${GOSOURCE_STARTUP}/gsgen.jar -i nginx.ftl -d ${GOSOURCE_ESFILTER} -o ${NGINX_CONFIG}/nginx.conf $VARIABLES
 
