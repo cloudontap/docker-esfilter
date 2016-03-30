@@ -26,6 +26,8 @@ http {
     gzip_disable "msie6";
     
     server_tokens off;
+    
+    real_ip_header X-Forwarded-For;
 
     upstream elasticsearch {
       server ${configurationObject.ElasticSearch.EndPoint};
@@ -44,7 +46,7 @@ http {
         server_name localhost;
     
         location /healthcheck {
-            include access.conf;
+            allow all;
 	    return 200 'Everything is ok';
         }
  
