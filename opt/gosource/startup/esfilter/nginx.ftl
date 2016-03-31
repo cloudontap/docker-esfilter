@@ -28,6 +28,7 @@ http {
     server_tokens off;
     
     set_real_ip_from ${configurationObject.ELB.CIDR};
+    
     real_ip_header X-Forwarded-For;
     real_ip_recursive on;
 
