@@ -27,7 +27,9 @@ http {
     
     server_tokens off;
     
+    set_real_ip_from ${configurationObject.ELB.CIDR};
     real_ip_header X-Forwarded-For;
+    real_ip_recursive on;
 
     upstream elasticsearch {
       server ${configurationObject.ElasticSearch.EndPoint};
@@ -47,19 +49,11 @@ http {
     
         location /healthcheck {
             allow all;
-	    return 200 'Everything is ok';
+            return 200 'Everything is ok';
         }
  
         location / {
             include ip_data.conf;
-            proxy_pass https://elasticsearch;
-            proxy_http_version 1.1;
-            proxy_set_header Connection "Keep-Alive";
-            proxy_set_header Proxy-Connection "Keep-Alive";
-            if ($http_x_forwarded_proto != "https") {
-     		 rewrite ^(.*)$ https://$host$1 permanent;
-            }
-            
         }
     }
 
