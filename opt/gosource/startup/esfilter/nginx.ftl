@@ -54,7 +54,7 @@ http {
         }
  
         location / {
-            include ip_query.conf;
+            include ip_data.conf;
         }
 
         location /_plugin/kibana/ {
