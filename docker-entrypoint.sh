@@ -1,5 +1,8 @@
 #!/bin/bash
 
+#populate .htpasswd for nginx auth
+htpasswd -bc /etc/nginx/.htpasswd $SHARED_USERNAME $SHARED_PASSWORD
+
 # Generate the necessary configuration
 /opt/gosource/startup/esfilter.sh
 

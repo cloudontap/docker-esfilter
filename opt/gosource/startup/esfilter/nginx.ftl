@@ -56,6 +56,11 @@ http {
         location / {
             include ip_data.conf;
         }
+
+        location /_plugin/kibana/ {
+	    auth_basic "Restricted";
+            auth_basic_user_file /etc/nginx/.htpasswd;
+        }
     }
 
 }
