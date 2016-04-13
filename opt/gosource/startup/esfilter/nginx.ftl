@@ -54,12 +54,12 @@ http {
         }
  
         location / {
-            include ip_data.conf;
+            include ip_query.conf;
         }
 
         location /_plugin/kibana/ {
 	    satisfy any;
-	    include ip_data.conf;
+	    include ip_query.conf;
 	    auth_basic "Restricted";
             auth_basic_user_file /etc/nginx/.htpasswd;
         }
