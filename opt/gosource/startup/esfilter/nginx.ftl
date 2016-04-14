@@ -54,10 +54,6 @@ http {
         }
  
         location / {
-            include ip_data.conf;
-        }
-
-        location /_plugin/kibana/ {
 	    satisfy any;
 	    include ip_query.conf;
 	    auth_basic "Restricted";
