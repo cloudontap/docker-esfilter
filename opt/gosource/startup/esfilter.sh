@@ -19,7 +19,7 @@ for LIST in data query; do
 	VARIABLES="${VARIABLES} -v list=${LIST}"
 	
 	# Generate the logstash configuration for loading data to elasticsearch
-	java -jar ${GOSOURCE_STARTUP}/gsgen.jar -i ip_list.ftl -d ${GOSOURCE_ESFILTER} -o ${NGINX_CONFIG}/ip_${LIST}.conf $VARIABLES
+	java -jar ${GOSOURCE_STARTUP}/gsgen.jar -i list.ftl -d ${GOSOURCE_ESFILTER} -o ${NGINX_CONFIG}/${LIST}.conf $VARIABLES
 done
 
 # Now the top level nginx configuration

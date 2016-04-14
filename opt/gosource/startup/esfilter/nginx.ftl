@@ -54,12 +54,9 @@ http {
         }
  
         location / {
-	    satisfy any;
-	    proxy_pass_request_headers off;
-	    include ip_query.conf;
-	    auth_basic "Restricted";
-            auth_basic_user_file /etc/nginx/.htpasswd;
-        }
-    }
+	    include query.conf;
+
+	        
+	}
 
 }
