@@ -54,9 +54,7 @@ http {
         }
  
         location / {
-	    include query.conf;
-
-	        
+	        include query.conf;
+	    }   
 	}
-
 }
