@@ -1,5 +1,8 @@
 [#ftl]
 [#assign configurationObject = configuration?eval]
+[#if !(es??)]
+    [#assign es = configurationObject.ElasticSearch.EndPoint]
+[/#if]
 user www-data;
 worker_processes 4;
 pid /run/nginx.pid;
@@ -33,7 +36,7 @@ http {
     real_ip_recursive on;
 
     upstream elasticsearch {
-      server ${configurationObject.ElasticSearch.EndPoint};
+      server ${es};
 
       keepalive 15;
     }

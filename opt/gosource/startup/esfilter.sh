@@ -25,6 +25,9 @@ done
 # Now the top level nginx configuration
 VARIABLES=""
 VARIABLES="${VARIABLES} -v configuration=${CONFIG_FILE}"
+if [[ -n "${ES}" ]]; then
+    VARIABLES="${VARIABLES} -v es=${ES}"
+fi
 
 java -jar ${GOSOURCE_STARTUP}/gsgen.jar -i nginx.ftl -d ${GOSOURCE_ESFILTER} -o ${NGINX_CONFIG}/nginx.conf $VARIABLES
 
