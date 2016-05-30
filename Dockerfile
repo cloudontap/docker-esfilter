@@ -1,7 +1,7 @@
 FROM java:8-jre
 
 # install plugin dependencies
-ENV NGINX_VERSION 1.9.14-1~jessie
+ENV NGINX_VERSION 1.11.0-1~jessie
 
 RUN apt-key adv --keyserver hkp://pgp.mit.edu:80 --recv-keys 573BFD6B3D8FBC641079A6ABABF5BD827BD9BF62 \
 	&& echo "deb http://nginx.org/packages/mainline/debian/ jessie nginx" >> /etc/apt/sources.list \
@@ -9,9 +9,9 @@ RUN apt-key adv --keyserver hkp://pgp.mit.edu:80 --recv-keys 573BFD6B3D8FBC64107
 	&& apt-get install -y \
 						ca-certificates \
 						nginx=${NGINX_VERSION} \
-						nginx-module-xslt \
-						nginx-module-geoip \
-						nginx-module-image-filter \
+						nginx-module-xslt=${NGINX_VERSION} \
+						nginx-module-geoip=${NGINX_VERSION} \
+						nginx-module-image-filter=${NGINX_VERSION} \
 						gettext-base \
 						apache2-utils \
 	&& rm -rf /var/lib/apt/lists/*
