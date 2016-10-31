@@ -16,6 +16,9 @@ QUERY_PASSWORD_PLAINTEXT=$(aws --region ${REGION} --output text kms decrypt \
             --query Plaintext \
             --ciphertext-blob "fileb://query_password.bin")
 
+echo $DATA_USERNAME=$DATA_PASSWORD_PLAINTEXT
+echo $QUERY_USERNAME=$QUERY_PASSWORD_PLAINTEXT
+
 # Populate password file with service credentials for query and data access 
 htpasswd -bc /etc/nginx/.htpasswd $DATA_USERNAME  $DATA_PASSWORD_PLAINTEXT
 htpasswd -b  /etc/nginx/.htpasswd $QUERY_USERNAME $QUERY_PASSWORD_PLAINTEXT
