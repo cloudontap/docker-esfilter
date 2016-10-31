@@ -14,6 +14,7 @@ RUN apt-key adv --keyserver hkp://pgp.mit.edu:80 --recv-keys 573BFD6B3D8FBC64107
 						nginx-module-image-filter=${NGINX_VERSION} \
 						gettext-base \
 						apache2-utils \
+						python python-pip \
 	&& rm -rf /var/lib/apt/lists/* && pip install --upgrade awscli
 
 # forward request and error logs to docker log collector
